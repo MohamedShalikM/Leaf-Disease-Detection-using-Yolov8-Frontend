@@ -1,0 +1,213 @@
+/* HERO SECTION */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+.hero {
+  background: linear-gradient(120deg,#071e17,#0d2c23,#071e17);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px;
+  color: white;
+}
+
+::selection {
+  background-color: #1f4f3b; 
+  color:#fff; 
+
+}
+
+.hero-container {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT IMAGE */
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* BADGE */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(50,200,130,0.1);
+  color: #45c187;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* TITLE */
+
+.hero-title {
+  font-size: 52px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Exo 2','Inter','sans-serif';
+}
+
+.hero-title span {
+  color: #39b37a;
+  display: block;
+}
+
+/* DESCRIPTION */
+
+.hero-description {
+  font-size: 18px;
+  color: #b5c9c2;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* BUTTONS */
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.hero-anchors{
+  text-decoration: none;
+}
+.btn-primary {
+  background: #46b27c;
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: #3aa56e;
+}
+
+.btn-secondary {
+  background: rgba(40,100,70,0.3);
+  border: none;
+  color: #3ec487;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: rgba(40,100,70,0.5);
+}
+
+/* TRUST SECTION */
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #a7c0b7;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #dcdcdc;
+  border: 2px solid #071e17;
+  margin-left: -8px;
+}
+
+/* ========================= */
+/* TABLET RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+.hero-container {
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 40px;
+}
+
+.hero-title {
+  font-size: 42px;
+}
+
+.hero-buttons {
+  justify-content: center;
+}
+
+.hero-trust {
+  justify-content: center;
+}
+
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+.hero {
+  padding: 50px 20px;
+}
+
+.hero-title {
+  font-size: 34px;
+}
+
+.hero-description {
+  font-size: 16px;
+}
+
+.hero-buttons {
+  flex-direction: column;
+  width: 100%;
+}
+
+.btn-primary,
+.btn-secondary {
+  width: 100%;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+}
+
+.hero-trust {
+  flex-direction: column;
+  gap: 10px;
+}
+
+}
