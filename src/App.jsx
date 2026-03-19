@@ -6,8 +6,9 @@ import ResultDisplay from "./components/ResultDisplay";
 import DiseasesInfo from "./components/DiseaseInfo";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-
+import { useTranslation } from "react-i18next";
 function App() {
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [detectionResult, setDetectionResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -56,7 +57,7 @@ function App() {
     setDetectionResult(null);
     setError(null);
   };
-
+  const { t, i18n } = useTranslation();
   return (
     <div className="app">
       <Header />
@@ -64,8 +65,8 @@ function App() {
       <main className="app-main">
         <div className="container">
           <div className="content-wrapper">
-            <div className="titles">  <h1>Protect Your Harvest</h1>
-            <p>Upload a clear photo of your tomato leaf. Our Yolov8 identifies diseases in seconds, helping you take imediate action</p></div>
+            <div className="titles">  <h1>{t("app.title")}</h1>
+            <p>{t("app.description")}</p></div>
           
             {/* <div className="left-section"> */}
             <ImageUpload

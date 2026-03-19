@@ -51,8 +51,14 @@
   border-radius: 30px;
   font-size: 13px;
   margin-bottom: 20px;
+  font-family: 'Noto Sans Tamil', sans-serif !important;
 }
 
+html[lang="ta"] .hero-badge,
+[data-lang="ta"] .hero-badge {
+  font-family: 'Noto Sans Tamil', sans-serif !important;
+  font-size:13px;
+}
 /* TITLE */
 
 .hero-title {
@@ -62,7 +68,10 @@
   margin-bottom: 20px;
   font-family: 'Exo 2','Inter','sans-serif';
 }
-
+html[lang="ta"] .hero-title, [data-lang="ta"]  .hero-title{
+   font-family: 'Noto Sans Tamil', sans-serif !important;
+   font-size:42px;
+}
 .hero-title span {
   color: #39b37a;
   display: block;

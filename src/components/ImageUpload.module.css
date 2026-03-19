@@ -48,11 +48,15 @@ body {
   border-radius: 18px;
   height: 330px;
   width:400px;
+  padding:20px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: 0.3s;
+}
+.upload-btn{
+  margin:10px;
 }
 
 .upload-area:hover {
