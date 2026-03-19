@@ -184,9 +184,7 @@ const diseaseInfo = isValidDetection
 
           <div className="result-content">
             <h3 className="disease-name">Unknown Object</h3>
-            <p className="confidence-text">
-              Please upload a clear tomato leaf image.
-            </p>
+            <p className="confidence-text">Please upload a clear leaf image.</p>
           </div>
         </div>
       )}

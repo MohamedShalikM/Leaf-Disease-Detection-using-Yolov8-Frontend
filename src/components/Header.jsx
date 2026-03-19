@@ -1,9 +1,12 @@
 import "./Header.css";
-import { Leaf} from "lucide-react";
+import { Leaf } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function Header() {
+  const { t, i18n } = useTranslation();
+
   return (
-    <header className="header">
+    <header className="header" data-lang={i18n.language}>
       <div className="header-container">
         {/* Logo Section */}
         <div className="logo-section">
@@ -12,22 +15,30 @@ function Header() {
           </div>
 
           <div className="logo-text">
-            <h1 className="header-title">Tomato Leaf Disease Detection</h1>
-            <p className="header-subtitle">AI-POWERED DIAGNOSIS USING YOLOV8</p>
+            <h1 className="header-title">{t("header.title")}</h1>
+            <p className="header-subtitle">{t("header.subtitle")}</p>
           </div>
         </div>
 
-        {/* Navigation */}
-         <nav className="nav-links">
-          {/* <a href="#" className="nav-link">
-            Research
-          </a>
-          <a href="#" className="nav-link">
-            Datasets
-          </a> */}
+        {/* Navigation + Language Switcher */}
+        <nav className="nav-links">
+          <button className="btn-dashboard">{t("nav.about")}</button>
 
-          <button className="btn-dashboard">About us</button>
-        </nav> 
+          <div className="language-switcher">
+            <button
+              className={`lang-btn ${i18n.language === "en" ? "active" : ""}`}
+              onClick={() => i18n.changeLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              className={`lang-btn ${i18n.language === "ta" ? "active" : ""}`}
+              onClick={() => i18n.changeLanguage("ta")}
+            >
+              தமிழ்
+            </button>
+          </div>
+        </nav>
       </div>
     </header>
   );

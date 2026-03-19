@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Webcam from "react-webcam";
 import { Upload, Camera, AlertCircle, X } from "lucide-react";
 import styles from "./ImageUpload.module.css";
+import { useTranslation } from "react-i18next";
 
 function ImageUpload({
   onImageSelect,
@@ -56,10 +57,12 @@ function ImageUpload({
   const handleDetectClick = () => {
     if (selectedImage && onDetect) onDetect(selectedImage);
   };
-
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles["image-upload"]} id="imageUploader">
-      <h2 className={styles["section-title"]}>Upload Image</h2>
+      <h2 className={styles["section-title"]}>
+        {t("image-upload.section-title")}
+      </h2>
 
       {/* CAMERA VIEW */}
       {cameraActive && (
@@ -75,14 +78,14 @@ function ImageUpload({
           <div className={styles["camera-controls"]}>
             <button onClick={captureImage} className={styles["btn-primary"]}>
               <Camera size={18} />
-              Capture
+              {t("image-upload.btn-prmiary")}
             </button>
 
             <button
               onClick={() => setCameraActive(false)}
               className={styles["btn-secondary"]}
             >
-              Cancel
+              {t("image-upload.btn-secondary")}
             </button>
           </div>
         </div>
@@ -113,9 +116,8 @@ function ImageUpload({
               className={styles["upload-area"]}
               onClick={() => fileInputRef.current?.click()}
             >
-              <Upload size={40} />
-              <p>Drag & Drop Image</p>
-              <p>or Click to Upload</p>
+              <Upload size={40} className={styles["upload-btn"]} />
+              <p>{t("image-upload.upload-area")}</p>
 
               <input
                 type="file"
@@ -132,27 +134,29 @@ function ImageUpload({
               className={styles["btn-primary"]}
               onClick={() => fileInputRef.current?.click()}
             >
-              <Upload size={18} /> Choose File
+              <Upload size={18} /> {t("image-upload.option-one")}
             </button>
 
             <button
               className={styles["btn-secondary"]}
               onClick={() => setCameraActive(true)}
             >
-              <Camera size={18} /> Use Camera
+              <Camera size={18} /> {t("image-upload.option-two")}
             </button>
           </div>
         </>
       )}
 
       {selectedImage && !cameraActive && (
-        <button
-          className={styles["btn-detect"]}
-          onClick={handleDetectClick}
-          disabled={loading}
-        >
-          {loading ? "Analyzing..." : "Detect Disease"}
-        </button>
+          <button
+            className={styles["btn-detect"]}
+            onClick={handleDetectClick}
+            disabled={loading}
+          >
+            {loading
+              ? t("image-upload.detection-analyze")
+              : t("image-upload.detection-btn")}
+          </button>
       )}
 
       {error && (

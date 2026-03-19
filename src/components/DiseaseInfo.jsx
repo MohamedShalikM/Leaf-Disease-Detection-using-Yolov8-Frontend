@@ -6,68 +6,59 @@ import {
   Droplets,
 } from "lucide-react";
 import "./DiseaseInfo.css";
-
+import { useTranslation } from "react-i18next";
 function DiseasesInfo() {
+  const { t, i18n } = useTranslation();
   const diseases = [
     {
-      name: "Healthy Leaf",
+      name: "disease-name-one",
       icon: CheckCircle2,
       color: "healthy",
-      description:
-        "Your tomato leaf is in perfect condition with no visible diseases or pests.",
+      description: "disease-one-description",
     },
     {
-      name: "Bacterial Spot",
+      name: "disease-name-two",
       icon: AlertCircle,
       color: "bacterial",
-      description:
-        "Small dark spots caused by bacterial pathogen, typically with yellow halos.",
+      description: "disease-two-description",
     },
     {
-      name: "Early Blight",
+      name: "disease-name-three",
       icon: AlertCircle,
       color: "blight",
-      description:
-        "Concentric brown rings on older leaves, progressing upward on the plant.",
+      description: "disease-three-description",
     },
     {
-      name: "Late Blight",
+      name: "disease-name-four",
       icon: AlertCircle,
       color: "blight-late",
-      description:
-        "Water-soaked lesions that rapidly spread, causing severe leaf damage.",
+      description: "disease-four-description",
     },
     {
-      name: "Septoria Leaf Spot",
+      name: "disease-name-five",
       icon: AlertCircle,
       color: "septoria",
-      description:
-        "Small circular spots with dark borders and gray centers with tiny black dots.",
+      description: "disease-five-description",
     },
 
-  
     {
-      name: "Leaf Mold",
+      name: "disease-name-six",
       icon: Droplets,
       color: "mold",
-      description:
-        "Fungal disease causing velvety yellow-brown spots on leaf undersides.",
+      description: "disease-six-description",
     },
     {
-      name: "Spider Mites",
+      name: "disease-name-seven",
       icon: Bug,
       color: "mites",
-      description:
-        "Tiny pests causing stippling and fine webbing on leaves, prefer hot dry conditions.",
+      description: "disease-seven-description",
     },
   ];
 
   return (
-    <div id='DiseaseInfo' className="diseases-info">
-      <h2 className="section-title">Detectable Diseases</h2>
-      <p className="section-subtitle">
-        This YOLOv8 model can identify the following tomato leaf conditions:
-      </p>
+    <div id="DiseaseInfo" className="diseases-info">
+      <h2 className="section-title">{t("disease-info.section-title")}</h2>
+      <p className="section-subtitle">{t("disease-info.section-subtitle")}</p>
 
       <div className="diseases-grid">
         {diseases.map((disease, index) => {
@@ -80,48 +71,52 @@ function DiseasesInfo() {
               <div className="disease-card-icon">
                 <IconComponent size={24} />
               </div>
-              <h3 className="disease-card-name">{disease.name}</h3>
-              <p className="disease-card-description">{disease.description}</p>
+              <h3 className="disease-card-name">
+                {t(`disease-info.${disease.name}`)}
+              </h3>
+              <p className="disease-card-description">
+                {t(`disease-info.${disease.description}`)}
+              </p>
             </div>
           );
         })}
       </div>
 
       <div className="how-it-works">
-        <h3 className="how-title">How It Works</h3>
+        <h3 className="how-title">{t("disease-info.how-title")}</h3>
         <div className="steps">
           <div className="step">
             <div className="step-number">1</div>
             <div>
-              <h4>Capture Image</h4>
-              <p>Upload or take a photo of the tomato leaf affected area</p>
+              <h4>{t("disease-info.step-one")}</h4>
+              <p>{t("disease-info.step-one-desc")}</p>
             </div>
           </div>
           <div className="step">
             <div className="step-number">2</div>
             <div>
-              <h4>AI Analysis</h4>
-              <p>YOLOv8 model analyzes the image to detect diseases</p>
+              <h4>{t("disease-info.step-two")}</h4>
+              <p>{t("disease-info.step-two-desc")}</p>
             </div>
           </div>
           <div className="step">
             <div className="step-number">3</div>
             <div>
-              <h4>Get Results</h4>
-              <p>Receive diagnosis with confidence score and recommendations</p>
+              <h4>{t("disease-info.step-three")}</h4>
+              <p>{t("disease-info.step-three-desc")}</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="tips-section">
-        <h3 className="tips-title">📸 Tips for Best Results</h3>
+        <h3 className="tips-title">📸 {t("disease-info.tips-title")}</h3>
         <ul className="tips-list">
-          <li>Ensure good lighting when capturing the image</li>
-          <li>Focus on the affected area of the leaf</li>
-          <li>Include the entire diseased portion in frame</li>
-          <li>Avoid shadows and glare on the leaf</li>
-          <li>Use high-quality images for better accuracy</li>
+          <li>{t("disease-info.tips-list-one")}</li>
+          <li>{t("disease-info.tips-list-two")}</li>
+          <li>{t("disease-info.tips-list-three")}</li>
+          <li>{t("disease-info.tips-list-four")}</li>
+          <li>{t("disease-info.tips-list-five")}</li>
         </ul>
       </div>
     </div>

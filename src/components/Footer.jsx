@@ -1,54 +1,45 @@
 import "./Footer.css";
-
+import { useTranslation } from "react-i18next";
 function Footer() {
+ const { t, i18n } = useTranslation();
   return (
+    
     <footer className="footer">
       <div className="footer-container">
         {/* Brand Section */}
         <div className="footer-section brand">
-          <h2>Tomato Leaf Disease Detection</h2>
-          <p>AI-powered disease detection using YOLOv8 for healthier crops.</p>
+          <h2>{t("footer.footer-title")}</h2>
+          <p>{t("footer.footer-desc")}</p>
         </div>
 
         {/* Features */}
         <div className="footer-section">
-          <h3>Features</h3>
+          <h3>{t("footer.feature-title")}</h3>
           <ul>
-            <li>Image Upload</li>
-            <li>Camera Capture</li>
-            <li>Disease Detection</li>
-            <li>Smart Recommendations</li>
+            <li>{t("footer.feature-list-one")}</li>
+            <li>{t("footer.feature-list-two")}</li>
+            <li>{t("footer.feature-list-three")}</li>
+            <li>{t("footer.feature-list-four")}</li>
           </ul>
         </div>
 
-        {/* Detectable Diseases */}
-        {/* <div className="footer-section">
-          <h3>Detectable Diseases</h3>
-          <ul>
-            <li>Healthy Leaf</li>
-            <li>Early & Late Blight</li>
-            <li>Bacterial Spot</li>
-            <li>Viral Diseases</li>
-          </ul>
-        </div> */}
-
         {/* Resources */}
         <div className="footer-section">
-          <h3>Resources</h3>
+          <h3>{t("footer.resources-title")}</h3>
           <ul>
             <li>
               <a href="https://docs.ultralytics.com" target="_blank">
-                YOLOv8 Docs
+                {t("footer.resources-list-one")}
               </a>
             </li>
             <li>
               <a href="https://react.dev" target="_blank">
-                React Guide
+                {t("footer.resources-list-two")}
               </a>
             </li>
             <li>
               <a href="https://vitejs.dev" target="_blank">
-                Vite Docs
+                {t("footer.resources-list-three")}
               </a>
             </li>
           </ul>
