@@ -82,43 +82,7 @@ function DiseasesInfo() {
         })}
       </div>
 
-      <div className="how-it-works">
-        <h3 className="how-title">{t("disease-info.how-title")}</h3>
-        <div className="steps">
-          <div className="step">
-            <div className="step-number">1</div>
-            <div>
-              <h4>{t("disease-info.step-one")}</h4>
-              <p>{t("disease-info.step-one-desc")}</p>
-            </div>
-          </div>
-          <div className="step">
-            <div className="step-number">2</div>
-            <div>
-              <h4>{t("disease-info.step-two")}</h4>
-              <p>{t("disease-info.step-two-desc")}</p>
-            </div>
-          </div>
-          <div className="step">
-            <div className="step-number">3</div>
-            <div>
-              <h4>{t("disease-info.step-three")}</h4>
-              <p>{t("disease-info.step-three-desc")}</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="tips-section">
-        <h3 className="tips-title">📸 {t("disease-info.tips-title")}</h3>
-        <ul className="tips-list">
-          <li>{t("disease-info.tips-list-one")}</li>
-          <li>{t("disease-info.tips-list-two")}</li>
-          <li>{t("disease-info.tips-list-three")}</li>
-          <li>{t("disease-info.tips-list-four")}</li>
-          <li>{t("disease-info.tips-list-five")}</li>
-        </ul>
-      </div>
     </div>
   );
 }

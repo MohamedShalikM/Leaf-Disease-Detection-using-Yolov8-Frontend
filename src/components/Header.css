@@ -1,3 +1,6 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap');
 /* ===== HEADER ===== */
 .header {
   width: 100%;
@@ -49,7 +52,7 @@
 .header-title {
   font-size: 22px;
   font-weight: 700;
-  font-family: 'Exo 2', 'Inter', sans-serif;
+  font-family: 'Playfair Display', serif;
   margin: 0;
   line-height: 1.2;
 }
@@ -59,7 +62,8 @@
   opacity: 0.8;
   letter-spacing: 1px;
   margin: 0;
-  font-family: 'Inter', sans-serif;
+    font-family: 'Playfair Display', serif;
+
 }
 
 /* TAMIL FONTS - ONLY WHEN TAMIL SELECTED */
@@ -90,7 +94,7 @@ html[lang="ta"] .header-subtitle,
   font-size: 15px;
   font-weight: 500;
   transition: 0.3s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .nav-link:hover {
@@ -114,7 +118,7 @@ html[lang="ta"] .nav-link,
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .btn-dashboard:hover {
@@ -144,6 +148,8 @@ html[lang="ta"] .btn-dashboard,
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
+    font-family: 'Playfair Display', serif;
+
   transition: all 0.2s;
   backdrop-filter: blur(10px);
 }
