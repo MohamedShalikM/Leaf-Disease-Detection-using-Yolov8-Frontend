@@ -1,5 +1,6 @@
 import "./Footer.css";
 import { useTranslation } from "react-i18next";
+import Logo from "../assets/icon1.png";
 function Footer() {
  const { t, i18n } = useTranslation();
   return (
@@ -8,6 +9,7 @@ function Footer() {
       <div className="footer-container">
         {/* Brand Section */}
         <div className="footer-section brand">
+          <div className='logo-icon'><img src={Logo} alt="logo" /></div>
           <h2>{t("footer.footer-title")}</h2>
           <p>{t("footer.footer-desc")}</p>
         </div>
@@ -47,7 +49,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © 2026 Yolov8 | Built with React + Vite
+        © 2026 LeafGuard Vision AI | All Rights Reserved
       </div>
     </footer>
   );

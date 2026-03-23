@@ -1,7 +1,7 @@
 {
   "header": {
-    "title": "Leaf Disease Detection",
-    "subtitle": "AI-POWERED DIAGNOSIS USING YOLOV8"
+    "title": "LeafGuard Vision AI",
+    "subtitle": "A Leaf Disease Detection using Yolov8"
   },
   "nav": {
     "about": "About us"
@@ -60,8 +60,8 @@
     "tips-list-five":"Use high-quality images for better accuracy"
   },
   "footer":{
-    "footer-title":"Leaf Disease Detection",
-    "footer-desc":"AI-powered disease detection using YOLOv8 for healthier crops.",
+    "footer-title":"LeafGuard Vision AI",
+    "footer-desc":"AI-powered disease detection using YOLOv8.",
     "feature-title":"Features",
     "feature-list-one":"Image Upload",
     "feature-list-two":"Camera Capture",

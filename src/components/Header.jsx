@@ -1,7 +1,8 @@
 import "./Header.css";
-import { Leaf } from "lucide-react";
+// import { Leaf } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
+import {Link} from 'react-router-dom'
+import Logo from '../assets/icon1.png';
 function Header() {
   const { t, i18n } = useTranslation();
 
@@ -11,7 +12,8 @@ function Header() {
         {/* Logo Section */}
         <div className="logo-section">
           <div className="logo-icon">
-            <Leaf size={28} />
+            {/* <Leaf size={28} /> */}
+            <img src={Logo} alt="logo" />
           </div>
 
           <div className="logo-text">
@@ -22,7 +24,10 @@ function Header() {
 
         {/* Navigation + Language Switcher */}
         <nav className="nav-links">
-          <button className="btn-dashboard">{t("nav.about")}</button>
+        
+             <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link> 
+ 
 
           <div className="language-switcher">
             <button
