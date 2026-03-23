@@ -11,6 +11,9 @@ function Hero() {
         {/* LEFT IMAGE */}
         <div className="hero-image">
           <img src={heroImage} alt="Tomato Detection" />
+          <div className="scanner-overlay">
+            <div className="scanner-line"></div>
+          </div>
         </div>
 
         {/* RIGHT CONTENT */}
@@ -25,9 +28,7 @@ function Hero() {
             <span>{t("hero.hero-title-span")}</span>
           </h1>
 
-          <p className="hero-description">
-           {t("hero.hero-description")}
-          </p>
+          <p className="hero-description">{t("hero.hero-description")}</p>
 
           <div className="hero-buttons">
             <a className="hero-anchors" href="#imageUploader">

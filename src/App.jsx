@@ -1,4 +1,10 @@
-import { useState, useEffect } from "react"; // ← Add useEffect
+import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom"; // 👈 ADD THIS
 import "./App.css";
 import Header from "./components/Header";
 import ImageUpload from "./components/ImageUpload";
@@ -6,28 +12,28 @@ import ResultDisplay from "./components/ResultDisplay";
 import DiseasesInfo from "./components/DiseaseInfo";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import About from "./components/About"; // 👈 ADD THIS
 import { useTranslation } from "react-i18next";
 
-function App() {
+function MainApp() {
+  // 👈 Rename to avoid conflict
   const [selectedImage, setSelectedImage] = useState(null);
   const [detectionResult, setDetectionResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // 👇 NEW: Add success state for popup
   const [success, setSuccess] = useState(false);
 
   const handleImageSelect = async (file) => {
     setSelectedImage(file);
     setError(null);
     setDetectionResult(null);
-    setSuccess(false); // Reset success
+    setSuccess(false);
   };
 
   const handleDetection = async (file) => {
     setLoading(true);
     setError(null);
-    setSuccess(false); // Reset success
+    setSuccess(false);
 
     try {
       const formData = new FormData();
@@ -49,8 +55,6 @@ function App() {
       }
 
       setDetectionResult(data);
-
-      // 👇 NEW: Show success popup after detection succeeds
       setSuccess(true);
     } catch (err) {
       setError(err.message);
@@ -59,7 +63,6 @@ function App() {
     }
   };
 
-  // 👇 NEW: Auto-hide success popup after 4 seconds
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
@@ -81,38 +84,63 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Hero />
-      <main className="app-main">
-        <div className="container">
-          <div className="content-wrapper">
-            <div className="titles">
-              <h1>{t("app.title")}</h1>
-              <p>{t("app.description")}</p>
-            </div>
+      <Routes>
+        {/* Home Route */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <main className="app-main">
+                <div className="container">
+                  <div className="content-wrapper">
+                    <div className="titles">
+                      <h1>{t("app.title")}</h1>
+                      <p>{t("app.description")}</p>
+                    </div>
 
-            {/* 👇 UPDATED: Pass success and onSuccessClose props */}
-            <ImageUpload
-              onImageSelect={handleImageSelect}
-              selectedImage={selectedImage}
-              onDetect={handleDetection}
-              loading={loading}
-              error={error}
-              success={success}
-              onSuccessClose={() => setSuccess(false)}
-            />
+                    <ImageUpload
+                      onImageSelect={handleImageSelect}
+                      selectedImage={selectedImage}
+                      onDetect={handleDetection}
+                      loading={loading}
+                      error={error}
+                      success={success}
+                      onSuccessClose={() => setSuccess(false)}
+                    />
 
-            <div className="divider"></div>
+                    <div className="divider"></div>
 
-            {detectionResult ? (
-              <ResultDisplay result={detectionResult} onClear={handleClear} />
-            ) : (
-              <DiseasesInfo />
-            )}
-          </div>
-        </div>
-      </main>
+                    {detectionResult ? (
+                      <ResultDisplay
+                        result={detectionResult}
+                        onClear={handleClear}
+                      />
+                    ) : (
+                      <DiseasesInfo />
+                    )}
+                  </div>
+                </div>
+              </main>
+            </>
+          }
+        />
+
+        {/* About Route */}
+        <Route path="/about" element={<About />} />
+      </Routes>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      {" "}
+      {/* 👈 Wrap with Router */}
+      <MainApp />
+    </Router>
   );
 }
 

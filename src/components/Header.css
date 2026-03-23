@@ -1,5 +1,5 @@
 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap');
 /* ===== HEADER ===== */
 .header {
@@ -26,16 +26,26 @@
 }
 
 .logo-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.15);
+  width: 44px;      /* 👈 Slightly larger container */
+  height: 44px;
+  border-radius: 12px;
+  /* background: rgba(255,255,255,0.15); */
   display: flex;
   align-items: center;
   justify-content: center;
   animation: logoicon 2s ease-in-out infinite;
   will-change: transform;
+  overflow: hidden; /* 👈 Clips img to border-radius */
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
 }
+
+.logo-icon img {
+  width: 28px;      /* 👈 Perfect img size */
+  height: 28px;
+  object-fit: contain;  /* 👈 Keeps logo proportions */
+  object-position: center;
+}
+
 
 @keyframes logoicon {
   0% { transform: translateY(0); }
@@ -51,18 +61,21 @@
 /* DEFAULT ENGLISH FONTS */
 .header-title {
   font-size: 22px;
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
+  /* font-weight: bold; */
+  font-family:'Poppins',sans-serif;
   margin: 0;
   line-height: 1.2;
+  /* letter-spacing: 2px; */
+  text-transform: uppercase;
 }
 
 .header-subtitle {
-  font-size: 11px;
+  font-size: 12px;
   opacity: 0.8;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   margin: 0;
-    font-family: 'Playfair Display', serif;
+  font-family:'Poppins',sans-serif;
+
 
 }
 
@@ -94,7 +107,8 @@ html[lang="ta"] .header-subtitle,
   font-size: 15px;
   font-weight: 500;
   transition: 0.3s;
-  font-family: 'Playfair Display', serif;
+  font-family:'Poppins',sans-serif;
+
 }
 
 .nav-link:hover {
@@ -118,7 +132,8 @@ html[lang="ta"] .nav-link,
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-  font-family: 'Playfair Display', serif;
+  font-family:'Poppins',sans-serif;
+
 }
 
 .btn-dashboard:hover {
@@ -148,8 +163,7 @@ html[lang="ta"] .btn-dashboard,
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-    font-family: 'Playfair Display', serif;
-
+  font-family:'Poppins',sans-serif;
   transition: all 0.2s;
   backdrop-filter: blur(10px);
 }
