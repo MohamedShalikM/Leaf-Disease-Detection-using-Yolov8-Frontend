@@ -12,6 +12,7 @@ import {
   Eye,
 } from "lucide-react";
 import "./ResultDisplay.css";
+import { useTranslation } from "react-i18next";
 
 /* ─────────────────────────────────────────────
    Helper: draw bounding boxes on a canvas
@@ -142,6 +143,7 @@ function getBBoxLocation(bbox, imgW = 640, imgH = 640) {
    Main Component
 ───────────────────────────────────────────── */
 function ResultDisplay({ result, onClear }) {
+   const { t } = useTranslation();
   const [showDetails, setShowDetails] = useState(false);
   const [showChart, setShowChart] = useState(false);
 
@@ -160,7 +162,10 @@ function ResultDisplay({ result, onClear }) {
     return map[disease] || "unknown";
   };
 
-  const getSeverityLabel = (confidence) => {
+  const getSeverityLabel = (confidence,className) => {
+      if (className === "Healthy Leaf") {
+        return { label: "Healthy", cls: "sev-healthy" };
+      }
     if (confidence >= 0.9) return { label: "Critical", cls: "sev-critical" };
     if (confidence >= 0.7) return { label: "High", cls: "sev-high" };
     if (confidence >= 0.5) return { label: "Medium", cls: "sev-medium" };
@@ -290,15 +295,19 @@ const normalizeName = (name) => {
         ],
       };
 
-  const severity = isValidDetection
-    ? getSeverityLabel(topDetection.confidence)
-    : null;
+ const severity = isValidDetection
+   ? getSeverityLabel(topDetection.confidence, topDetection.name)
+   : null;
+
 
   return (
     <div className="result-display">
       {/* ── Header ── */}
       <div className="result-header">
-        <h2 className="result-title">Detection Results</h2>
+        <h2 className="result-title">
+          {" "}
+          {t("result-display.result-display-title")}
+        </h2>
         <button
           className="btn-reset"
           onClick={onClear}
@@ -312,7 +321,7 @@ const normalizeName = (name) => {
       {hasImage && (
         <div className="section bbox-section">
           <div className="section-label">
-            <Eye size={13} /> Detection Heatmap
+            <Eye size={13} /> {t("result-display.section-label")}
           </div>
           <div className="bbox-wrapper">
             <BBoxCanvas
@@ -320,15 +329,10 @@ const normalizeName = (name) => {
               detections={allDetections.filter((d) => d.bbox)}
             />
             {!allDetections.some((d) => d.bbox) && (
-              <p className="bbox-note">
-                No bounding box data available for this result.
-              </p>
+              <p className="bbox-note">{t("result-display.bbox-note")}</p>
             )}
           </div>
-          <p className="bbox-caption">
-            Highlighted regions indicate active disease colonies detected by
-            YOLOv8.
-          </p>
+          <p className="bbox-caption">{t("result-display.bbox-caption")}</p>
         </div>
       )}
 
@@ -359,7 +363,7 @@ const normalizeName = (name) => {
               />
             </div>
             <p className="confidence-text">
-              Confidence:{" "}
+              {t("result-display.confidence-label")}{" "}
               <strong>{(topDetection.confidence * 100).toFixed(1)}%</strong>
             </p>
 
@@ -385,9 +389,12 @@ const normalizeName = (name) => {
             <AlertCircle size={48} />
           </div>
           <div className="result-content">
-            <h3 className="disease-name">Unknown Object</h3>
+            <h3 className="disease-name">
+              {" "}
+              {t("result-display.disease-name")}
+            </h3>
             <p className="confidence-text">
-              Please upload a clear tomato leaf image.
+              {t("result-display.confidence-text")}
             </p>
           </div>
         </div>
@@ -401,7 +408,8 @@ const normalizeName = (name) => {
             onClick={() => setShowDetails((v) => !v)}
           >
             <span>
-              <Layers size={13} /> Per-Region Details ({allDetections.length})
+              <Layers size={13} /> {t("result-display.per-region-details")} (
+              {allDetections.length})
             </span>
             {showDetails ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
           </button>
@@ -410,9 +418,9 @@ const normalizeName = (name) => {
             <div className="details-table">
               <div className="dt-head">
                 <span>#</span>
-                <span>Disease</span>
-                <span>Confidence</span>
-                <span>Location</span>
+                <span>{t("result-display.dt-head-one")}</span>
+                <span>{t("result-display.dt-head-two")}</span>
+                <span>{t("result-display.dt-head-three")}</span>
               </div>
               {allDetections.map((det, i) => (
                 <div key={i} className="dt-row">
@@ -444,7 +452,8 @@ const normalizeName = (name) => {
             onClick={() => setShowChart((v) => !v)}
           >
             <span>
-              <BarChart2 size={13} /> Confidence Distribution
+              <BarChart2 size={13} />
+              {t("result-display.confidence-distribution")}
             </span>
             {showChart ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
           </button>
@@ -456,14 +465,16 @@ const normalizeName = (name) => {
       {/* ── Section C: Disease info ── */}
       <div className="disease-info">
         <h4 className="info-title">
-          <Zap size={18} /> About this condition
+          <Zap size={18} /> {t("result-display.info-title")}
         </h4>
         <p className="info-description">{diseaseInfo.description}</p>
       </div>
 
       {/* ── Recommendations ── */}
       <div className="recommendations">
-        <h4 className="recommendations-title">Recommended Actions</h4>
+        <h4 className="recommendations-title">
+          {t("result-display.recommendations-title")}
+        </h4>
         <ul className="recommendations-list">
           {diseaseInfo.recommendations.map((rec, i) => (
             <li key={i} className="recommendation-item">
@@ -476,10 +487,7 @@ const normalizeName = (name) => {
 
       {/* ── Footer ── */}
       <div className="result-footer">
-        <p className="footer-note">
-          ⓘ This is an AI-based analysis using YOLOv8. For critical issues,
-          consult a plant specialist.
-        </p>
+        <p className="footer-note">{t("result-display.footer-note")}</p>
       </div>
     </div>
   );

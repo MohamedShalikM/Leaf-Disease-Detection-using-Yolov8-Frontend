@@ -59,6 +59,23 @@
     "tips-list-four":"Avoid shadows and glare on the leaf",
     "tips-list-five":"Use high-quality images for better accuracy"
   },
+  "result-display":{
+    "result-display-title":"Detection Results",
+    "section-label":"Detection Heatmap",
+    "bbox-note":"No bounding box data available for this result.",
+    "bbox-caption":"Highlighted regions indicate active disease colonies detected by YOLOv8.",
+    "disease-name":"Unknown Object",
+    "confidence-text":"Please upload a clear leaf image.",
+    "per-region-details":"Per-Region Details",
+    "dt-head-one":"Disease",
+    "dt-head-two":"Confidence",
+    "dt-head-three":"Location",
+    "confidence-distribution":"Confidence Distribution",
+    "info-title":"About this condition",
+    "recommendations-title":"Recommended Actions",
+    "footer-note":"ⓘ This is an AI-based analysis using YOLOv8. For critical issues, consult a plant specialist.",
+    "confidence-label": "Confidence:"
+  },
   "footer":{
     "footer-title":"LeafGuard Vision AI",
     "footer-desc":"AI-powered disease detection using YOLOv8.",
